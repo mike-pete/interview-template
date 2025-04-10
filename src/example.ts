@@ -1,9 +1,9 @@
 class Car {
-	private make: string
+	#make: string // this is private https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties
 	model: string
 
 	constructor(make: string, model: string) {
-		this.make = make
+		this.#make = make
 		this.model = model
 	}
 
@@ -12,7 +12,15 @@ class Car {
 	}
 
 	get makeUpperCase() {
-		return this.make.toUpperCase()
+		return this.#make.toUpperCase()
+	}
+
+	get make() {
+		return this.#make
+	}
+
+	set make(newMake: string) {
+		this.#make = newMake
 	}
 }
 
